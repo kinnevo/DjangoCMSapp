@@ -1,0 +1,44 @@
+{% extends "base1.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+    <h1>Tutorial de como desplegar</h1>
+    {% placeholder "content" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 caja">navigation
+                <ul>Activities
+                    <li>surf</li>
+                    <li>tour</li>
+                    <li>biking</li>
+                    <li>paddle</li>
+                    <li>parachute</li>
+                </ul>
+
+                <dl>
+                    <dt>Land:</dt>
+                    <dd>surf</dd>
+                    <dd>tour</dd>
+                    <dd>biking</dd>
+                    <dd>paddle</dd>
+                    <dd>parachute</dd>
+                </dl>
+                </ul>
+            </div>
+            <div class="col-md-4">content
+                {% for activity in activities %}
+                    <p>{{ activity.activity }}</p>
+                    <p>{{ activity.description }}</p>
+                    <p>{{ activity.category }}</p>
+                    <p><a href="{{ activity.image }}"> <img src="{{ MEDIA_URL }}{{ activity.image_file }}" width="300"> </a></p>
+                    <br />
+                {% endfor %}
+
+            </div>
+            <div class="col-md-4">sidebar
+            </div>
+        </div>
+    </div>
+{% endblock content %}
